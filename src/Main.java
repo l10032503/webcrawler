@@ -13,7 +13,11 @@ public class Main {
         urlList2 = deleteDuplicate(urlList);
 
         System.out.println("====================urllist=============================");
-        System.out.println(urlList2);
+        int i = 0;
+
+        for(String url : urlList2){
+            System.out.println((i++) +": "+  url);
+        }
     }
 
     public static List<String> deleteDuplicate(List<String> list){
@@ -21,7 +25,7 @@ public class Main {
         int i = 0;
 
         for (String element : list) {
-            System.out.println(i++);
+            //System.out.println(i++);
             // If this element is not present in newList
             // then add it
             if (!filterlist.contains(element)) {

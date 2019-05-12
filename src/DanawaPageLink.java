@@ -49,6 +49,7 @@ public class DanawaPageLink {
         int i=0;
         try {
             driver.get(base_url);
+
             String html = driver.getPageSource();
             Document doc = Jsoup.parse(html);
             Element productListArea = doc.getElementById("productListArea");
@@ -64,6 +65,7 @@ public class DanawaPageLink {
 
                 for(int page = 1; page<=10; page++){
                     driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+                    Thread.sleep(20*1000);
                     html = driver.getPageSource();
                     doc = Jsoup.parse(html);
                     System.out.println(page);
@@ -71,7 +73,6 @@ public class DanawaPageLink {
                     prod_main_infos = productListArea.getElementsByClass("prod_info");
                     elementList = driver.findElements(By.className("num"));
                     WebElement nextpage = driver.findElement(By.className("nav_next"));
-
                     for(Element prod_main_info : prod_main_infos){
                         Elements prod_info = prod_main_info.getElementsByClass("prod_name");
                         Elements prod_names = prod_info.tagName("p");
