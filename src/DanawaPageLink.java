@@ -7,14 +7,14 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
+/*
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.ContentType;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClientBuilder;*/
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -31,7 +31,9 @@ public class DanawaPageLink {
     private WebDriver driver;
 
     private static final String WEB_DRIVER_ID = "webdriver.chrome.driver";
-    private static final String WEB_DRIVER_PATH = "C:/Users/hyoen/IdeaProjects/webcrawler/74/chromedriver.exe";
+    //private static final String WEB_DRIVER_PATH = "C:/Users/hyoen/IdeaProjects/webcrawler/74/chromedriver.exe";
+    private static final String WEB_DRIVER_PATH = "C:\\Selenium\\chromedriver.exe";
+
 
     private String base_url;
 
