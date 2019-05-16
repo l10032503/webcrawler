@@ -25,8 +25,8 @@ public class Main {
             System.out.println((i++) +": "+  url);
         }
 
-        specCrawler(urlList2);
-
+        String[][][] dataArr = specCrawler(urlList2);
+        SQLTest sqltest = new SQLTest(dataArr);
     }
 
     public static List<String> deleteDuplicate(List<String> list){
@@ -47,9 +47,7 @@ public class Main {
         return filterlist;
     }
 
-
-
-    static void specCrawler(List<String> urlList){
+    static String[][][] specCrawler(List<String> urlList){
         System.setProperty("webdriver.chrome.driver","C:\\Selenium\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -65,12 +63,14 @@ public class Main {
             String URL = urlListArr[i];
             driver.get(URL);
             WebElement notebookName = driver.findElement(By.className("prod_tit"));
+            WebElement notebookPrice = driver.findElement(By.xpath("//*[@id=\"blog_content\"]/div[2]/div[2]/div[1]/div[2]/div[1]/div[1]/span[2]/a/em"));
             WebElement myTable = driver.findElement(By.className("spec_tbl"));
             List<WebElement> oneLine = myTable.findElements(By.tagName("tr"));
             int oneLine_size = oneLine.size();
 
             ArrayList<String[]> dataList = new ArrayList<String[]>();
             dataList.add(new String[]{"상품명", notebookName.getText()});
+            dataList.add(new String[]{"가격", notebookPrice.getText()});
 
             for(int j=0 ; j<oneLine_size ; j++){
                 List<WebElement> name = oneLine.get(j).findElements(By.tagName("th"));
@@ -98,5 +98,8 @@ public class Main {
                 System.out.print("{"+dataArr[i][j][0] + " = " +dataArr[i][j][1]+"} ");
             System.out.println("");
         }
+
+        return dataArr;
     }
+
 }
